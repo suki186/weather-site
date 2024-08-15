@@ -18,7 +18,7 @@ function App() {
     // await(기다림)은 비동기적 -> async 함수
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
 
-    // json파일로
+    // json파일로 추출
     const current = await response.json();
 
     console.log("현재 날씨: ", current);
