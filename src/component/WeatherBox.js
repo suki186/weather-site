@@ -1,12 +1,11 @@
 import React from 'react'
-import WindBox from './WindBox';
-import Fashion from './Fashion';
-import searchIcon from '../media/search.png';
-import homeBtn from '../media/homeBtn.png';
-
 import { useState } from 'react';
 
+import WindBox from './WindBox';
+import Fashion from './Fashion';
+import HomeButton from './HomeButton';
 
+import searchIcon from '../media/search.png';
 
 const WeatherBox = ({weather, setCity}) => {
 
@@ -47,9 +46,6 @@ const WeatherBox = ({weather, setCity}) => {
                 <WindBox weather={weather}/>
                 <Fashion weather={weather}/>
             </div>
-            
-
-            <button className='homeBtn'><img src={homeBtn}/></button>
             
 
         </div>
