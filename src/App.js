@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import WeatherBox from './component/WeatherBox';
+import WeatherButton from './component/WeatherButton';
 
 //1. 앱이 실행되면 현재 위치의 날씨 보이기
 //2. 도시, 섭씨, 화씨, 날씨상태
@@ -11,17 +14,23 @@ import './App.css';
 function App() {
   
   const API_KEY = "49a5da1cbad55ace19bde433006f8cab";
+  
+
+  const [weather, setWeather] = useState(null);
 
   // 현재 날씨 정보 가져오기
   const getWeatherCurrentLocation = async(lat, lon)=> {
 
     // await(기다림)은 비동기적 -> async 함수
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
 
     // json파일로 추출
     const current = await response.json();
-
     console.log("현재 날씨: ", current);
+
+    
+
+    setWeather(current);
   }
 
   const getCurrentLocation =()=> {
@@ -42,8 +51,13 @@ function App() {
   }, []); //componentDidMount
 
   return (
-    <div>
-      hi
+    <div className='background'>
+      <div className='container'>
+        <WeatherBox weather={weather}/>
+        <WeatherButton />
+
+      </div>
+      
     </div>
   );
 }
