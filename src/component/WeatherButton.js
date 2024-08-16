@@ -5,10 +5,10 @@ import { Button } from 'react-bootstrap';
 const WeatherButton = () => {
   return (
     <div>
-        <Button variant="info">현재위치</Button>
-        <Button variant="info">파리</Button>
-        <Button variant="info">로마</Button>
-        <Button variant="info">도쿄</Button>
+        <Button variant="info">미완성</Button>
+        <Button variant="info">입</Button>
+        <Button variant="info">니</Button>
+        <Button variant="info">다</Button>
 
     </div>
   )
