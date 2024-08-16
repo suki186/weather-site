@@ -4,21 +4,37 @@ import Fashion from './Fashion';
 import searchIcon from '../media/search.png';
 import homeBtn from '../media/homeBtn.png';
 
+import { useState } from 'react';
 
 
-const WeatherBox = ({weather}) => {
+
+const WeatherBox = ({weather, setCity}) => {
+
+    const [text, setText] = useState("");
 
     const iconURL = `http://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`;
+
+    const onChange =(e)=> {
+        setText(e.target.value);
+    }
+
+    const onClick =()=> {
+        setCity(text);
+    }
 
     return (
         <div className='weather-box'>
 
             <div className='searchBox'>
+
                 <input type="text"
                     placeholder='City Name'
                     className='searchInput'
+                    onChange={onChange}
+
                 />
-                <button alt="버튼" className='searchBtn'><img src={searchIcon}/></button>
+                <button alt="검색버튼" className='searchBtn' onClick={onClick}><img src={searchIcon}/></button>
+
             </div>
 
             <div className='cityName'>{weather?.name}, {weather?.sys.country}</div>
@@ -34,6 +50,7 @@ const WeatherBox = ({weather}) => {
             
 
             <button className='homeBtn'><img src={homeBtn}/></button>
+            
 
         </div>
     )

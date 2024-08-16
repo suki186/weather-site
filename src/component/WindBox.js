@@ -6,10 +6,8 @@ const WindBox = ({weather}) => {
   return (
     <div className='wind-box'>
 
-        <div>
-            <img className='windImg' src={windImg}></img>
-            {weather?.wind.speed} m/s
-        </div>
+      <div><img className='windImg' src={windImg}></img></div>
+      <div className='font'>{weather?.wind.speed} m/s</div>
 
     </div>
   )

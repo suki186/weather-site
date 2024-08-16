@@ -17,9 +17,10 @@ function App() {
   
 
   const [weather, setWeather] = useState(null);
+  const [city, setCity] = useState("");
 
   // 현재 날씨 정보 가져오기
-  const getWeatherCurrentLocation = async(lat, lon)=> {
+  const getWeatherCurrentLocation = async(lat, lon) => {
 
     // await(기다림)은 비동기적 -> async 함수
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
@@ -28,7 +29,14 @@ function App() {
     const current = await response.json();
     console.log("현재 날씨: ", current);
 
-    
+    setWeather(current);
+  }
+
+  const getWeatherCity = async() => {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+
+    const current = await response.json();
+    console.log("현재 날씨: ", current);
 
     setWeather(current);
   }
@@ -42,19 +50,25 @@ function App() {
       console.log("현재 위치: ", lat, ",", lon);
 
       getWeatherCurrentLocation(lat, lon);
-      //getWeatherCurrentLocation(37.2068, 126.8169); // 화성시
+      //getWeatherCurrentLocation(52.796598, -2.125131);
 
     });
   }
 
   useEffect(() => {
-    getCurrentLocation() // 현재 위치 가져오기
-  }, []); //componentDidMount
+    if (city == "") {
+      getCurrentLocation(); // 현재 위치 가져오기
+    }
+    else {
+      getWeatherCity(); // 도시 날씨 가져오기
+    }
+    
+  }, [city]); //componentDidMount
 
   return (
     <div className='background'>
       <div className='container'>
-        <WeatherBox weather={weather}/>
+        <WeatherBox weather={weather} setCity={setCity}/>
         <WeatherButton />
 
       </div>
