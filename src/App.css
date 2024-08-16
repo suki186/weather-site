@@ -26,12 +26,28 @@ body {
 }
 
 .wind-box {
-    background-color: white;
+    /* background-color: white; */
+    margin-right: 7px;
 
 }
 
 .windImg {
     margin-right: 10px;
+}
+
+.fashion-box {
+    /* background-color: white; */
+    margin-left: 7px;
+}
+
+.fashionImg {
+    margin-right: 10px;
+}
+
+.information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .searchInput {

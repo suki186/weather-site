@@ -42,6 +42,7 @@ function App() {
       console.log("현재 위치: ", lat, ",", lon);
 
       getWeatherCurrentLocation(lat, lon);
+      //getWeatherCurrentLocation(37.2068, 126.8169); // 화성시
 
     });
   }
