@@ -1,4 +1,5 @@
 import React from 'react'
+import WindBox from './WindBox';
 import searchIcon from '../media/search.png';
 import homeBtn from '../media/homeBtn.png';
 
@@ -22,12 +23,14 @@ const WeatherBox = ({weather}) => {
 
             <div className='temp'>{Number(weather?.main.temp).toFixed(1)}℃ / {Number(weather?.main.temp*1.8+32).toFixed(1)}℉</div>
 
-            <div><img className='iconImg' src={iconURL}></img></div>
+            <div className='icon'><img className='iconImg' src={iconURL}></img></div>
+
+            <div>
+                <WindBox weather={weather}/>
+            </div>
+            
 
             <button className='homeBtn'><img src={homeBtn}/></button>
-
-
-            
 
         </div>
     )
