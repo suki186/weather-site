@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import WindBox from './WindBox';
 import Fashion from './Fashion';
-import HomeButton from './HomeButton';
 
 import searchIcon from '../media/search.png';
 
