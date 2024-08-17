@@ -26,6 +26,12 @@ body {
 
 }
 
+@media screen and (max-width: 400px) {
+    .weather-box {
+        width: 320px;
+    }
+}
+
 .wind-box {
     /* background-color: white; */
     margin-right: 7px;
