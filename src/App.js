@@ -24,28 +24,47 @@ function App() {
   // 현재 날씨 정보 가져오기
   const getWeatherCurrentLocation = async(lat, lon) => {
 
-    setLoading(true);
-    // await(기다림)은 비동기적 -> async 함수
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+    try {
+      //setLoading(true);
+      // await(기다림)은 비동기적 -> async 함수
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
 
-    // json파일로 추출
-    const current = await response.json();
-    console.log("현재 날씨: ", current);
+      // json파일로 추출
+      const current = await response.json();
+      console.log("현재 날씨: ", current);
 
-    setWeather(current);
-    setLoading(false);
+      setWeather(current);
+      setLoading(false);
+
+    } catch (e) {
+
+      console.log(e);
+      setLoading(false);
+
+    }
+
+    
   }
 
   const getWeatherCity = async() => {
 
-    setLoading(true);
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+    try {
+      //setLoading(true);
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
 
-    const current = await response.json();
-    console.log("현재 날씨: ", current);
+      const current = await response.json();
+      console.log("현재 날씨: ", current);
 
-    setWeather(current);
-    setLoading(false);
+      setWeather(current);
+      setLoading(false);
+
+    } catch (e) {
+      
+      console.log(e);
+      setLoading(false);
+
+    }
+    
   }
 
   const getCurrentLocation =()=> {
@@ -64,14 +83,17 @@ function App() {
 
   // 홈버튼 누르면 현재위치 날씨 보여주기
   const handleHome =()=> {
+    setLoading(true);
     setCity("");
   };
 
   useEffect(() => {
     if (city == "") {
+      setLoading(true);
       getCurrentLocation(); // 현재 위치 가져오기
     }
     else {
+      setLoading(true);
       getWeatherCity(); // 도시 날씨 가져오기
     }
     
