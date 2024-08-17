@@ -75,6 +75,10 @@ body {
     text-align: center;
 }
 
+.searchInput :hover {
+	border: 1px solid #999999;
+}
+
 .searchBtn {
     border: none;
     background: none;
@@ -83,6 +87,10 @@ body {
 
 .searchBtn img{
     height: 20px;
+}
+
+.searchBtn :hover {
+	transform: scale(1.1);
 }
 
 .homeBtn {
@@ -95,6 +103,12 @@ body {
 .homeBtn img {
     width: 30px;
     height: 30px;
+    border-radius: 50%;
+}
+
+.homeBtn :hover {
+    box-shadow: 0 0 10px 4px rgb(62, 157, 159);
+	transform: scale(1.1);
 }
 
 .icon {

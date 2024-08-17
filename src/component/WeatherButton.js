@@ -1,14 +1,14 @@
 import React from 'react'
-import { Button } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
 
+import homeIcon from '../media/homeBtn.png';
 
-const WeatherButton = () => {
+const WeatherButton = ({handleHome}) => {
   return (
     <div>
-        <Button variant="info">미완성</Button>
-        <Button variant="info">입</Button>
-        <Button variant="info">니</Button>
-        <Button variant="info">다</Button>
+        <button className='homeBtn' onClick={()=>handleHome()}>
+          <img src={homeIcon} />
+        </button>
 
     </div>
   )

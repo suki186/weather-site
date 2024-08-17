@@ -62,6 +62,11 @@ function App() {
     });
   }
 
+  // 홈버튼 누르면 현재위치 날씨 보여주기
+  const handleHome =()=> {
+    setCity("");
+  };
+
   useEffect(() => {
     if (city == "") {
       getCurrentLocation(); // 현재 위치 가져오기
@@ -85,8 +90,8 @@ function App() {
 
         <div className='container'>
     
-          <WeatherBox weather={weather} setCity={setCity}/>
-          <WeatherButton />
+          <WeatherBox weather={weather} setCity={setCity} handleHome={handleHome}/>
+          
 
         </div>
       )}

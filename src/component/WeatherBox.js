@@ -3,10 +3,11 @@ import { useState } from 'react';
 
 import WindBox from './WindBox';
 import Fashion from './Fashion';
+import WeatherButton from './WeatherButton';
 
 import searchIcon from '../media/search.png';
 
-const WeatherBox = ({weather, setCity}) => {
+const WeatherBox = ({weather, setCity, handleHome}) => {
 
     const [text, setText] = useState("");
 
@@ -45,6 +46,8 @@ const WeatherBox = ({weather, setCity}) => {
                 <WindBox weather={weather}/>
                 <Fashion weather={weather}/>
             </div>
+
+            <WeatherButton handleHome={handleHome}/>
             
 
         </div>
