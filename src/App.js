@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WeatherBox from './component/WeatherBox';
-import WeatherButton from './component/WeatherButton';
 import ClipLoader from "react-spinners/ClipLoader";
 
 //1. 앱이 실행되면 현재 위치의 날씨 보이기
@@ -20,12 +19,13 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // 현재 날씨 정보 가져오기
   const getWeatherCurrentLocation = async(lat, lon) => {
 
     try {
-      //setLoading(true);
+      setError(null);
       // await(기다림)은 비동기적 -> async 함수
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
 
@@ -34,13 +34,16 @@ function App() {
       console.log("현재 날씨: ", current);
 
       setWeather(current);
-      setLoading(false);
 
     } catch (e) {
 
       console.log(e);
-      setLoading(false);
 
+      setWeather(null);
+      setError("Failed to fetch weather data");
+
+    } finally {
+      setLoading(false);
     }
 
     
@@ -49,20 +52,24 @@ function App() {
   const getWeatherCity = async() => {
 
     try {
-      //setLoading(true);
+      setError(null);
+
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
 
       const current = await response.json();
       console.log("현재 날씨: ", current);
 
       setWeather(current);
-      setLoading(false);
 
     } catch (e) {
       
       console.log(e);
-      setLoading(false);
 
+      setWeather(null);
+      setError("Failed to fetch weather data");
+
+    } finally {
+      setLoading(false);
     }
     
   }
@@ -83,8 +90,9 @@ function App() {
 
   // 홈버튼 누르면 현재위치 날씨 보여주기
   const handleHome =()=> {
-    setLoading(true);
     setCity("");
+    setLoading(true);
+    setError(null);
   };
 
   useEffect(() => {
@@ -108,16 +116,16 @@ function App() {
         <div className='container'>
           <ClipLoader color="#87CEEB" loading={loading} size={30}/>
         </div>
-      ): (
+      ) : (
 
         <div className='container'>
+          {error && <div>{error}</div>}
     
           <WeatherBox weather={weather} setCity={setCity} handleHome={handleHome}/>
           
 
         </div>
       )}
-      
       
     </div>
   );
