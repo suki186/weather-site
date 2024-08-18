@@ -88,7 +88,6 @@ function App() {
   // 홈버튼 누르면 현재위치 날씨 보여주기
   const handleHome =()=> {
     setCity("");
-    setLoading(true);
     setError(null);
   };
 
