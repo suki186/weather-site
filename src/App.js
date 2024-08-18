@@ -38,8 +38,6 @@ function App() {
     } catch (e) {
 
       console.log(e);
-
-      setWeather(null);
       setError("Failed to fetch weather data");
 
     } finally {
@@ -59,14 +57,13 @@ function App() {
       const current = await response.json();
       console.log("현재 날씨: ", current);
 
+      if (current.cod !== 200) throw new Error(current.message);
       setWeather(current);
 
     } catch (e) {
       
       console.log(e);
-
-      setWeather(null);
-      setError("Failed to fetch weather data");
+      setError("Please enter a valid city name");
 
     } finally {
       setLoading(false);
@@ -119,7 +116,7 @@ function App() {
       ) : (
 
         <div className='container'>
-          {error && <div>{error}</div>}
+          {error && <div className='errorMsg'>{error}</div>}
     
           <WeatherBox weather={weather} setCity={setCity} handleHome={handleHome}/>
           
