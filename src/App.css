@@ -22,9 +22,8 @@ body {
 }
 
 .weather-box {
-    /* font-family: 'Ownglyph_UNZ-Rg'; */
-    /* font-size: 25px; */
-    font-size: 18px;
+    font-family: 'Ownglyph_UNZ-Rg';
+    font-size: 25px;
     
     width: 350px;
     padding: 50px;
@@ -42,7 +41,7 @@ body {
 @media screen and (max-width: 400px) {
     .weather-box {
         width: 300px;
-        font-size: 12px
+        font-size: 18px
         
     }
 }
