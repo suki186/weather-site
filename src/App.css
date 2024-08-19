@@ -9,13 +9,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
 }
 
 @font-face {
     font-family: 'Ownglyph_UNZ-Rg';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/Ownglyph_UNZ-Rg.woff2') format('woff2');
+    src: url("fonts/Ownglyph_UNZ.ttf");
+    
     font-weight: normal;
     font-style: normal;
 }
@@ -37,7 +38,13 @@ body {
 
 }
 
-
+@media screen and (max-width: 400px) {
+    .weather-box {
+        width: 300px;
+        font-size: 18px
+        
+    }
+}
 
 .wind-box {
     /* background-color: white; */
@@ -82,7 +89,7 @@ body {
     text-align: center;
 }
 
-.searchInput :hover {
+.searchInput :active {
 	border: 1px solid #999999;
 }
 
@@ -96,7 +103,7 @@ body {
     height: 20px;
 }
 
-.searchBtn :hover {
+.searchBtn :active {
 	transform: scale(1.1);
 }
 
@@ -113,7 +120,7 @@ body {
     border-radius: 50%;
 }
 
-.homeBtn :hover {
+.homeBtn :active {
     box-shadow: 0 0 10px 4px rgb(62, 157, 159);
 	transform: scale(1.1);
 }
